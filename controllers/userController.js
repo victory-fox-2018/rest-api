@@ -5,7 +5,7 @@ module.exports = {
 
     signup: (req, res) => {
         let password = hash.bcencode(req.body.password)
-        Model.User.create({email:req.body.email, password})
+        Model.User.create({name:req.body.name, email:req.body.email, role:req.body.role, password})
         .then( response => {
             res.status(200).json({response})
         })
@@ -15,9 +15,23 @@ module.exports = {
     },
 
     signin: (req, res) => {
-        Model.User.findOne({email:req.body.email, password:req.body.password})
+        Model.User.findOne({where:{email:req.body.email}})
         .then( response => {
-            res.status(200).json({response})
+            if(response) {
+                let password = hash.bcdecode(req.body.password, response.password)
+                if(password) {
+                    let token = hash.jwtencode({
+                        id: response.id,
+                        email: response.email,
+                        role: response.role
+                    })
+                    res.status(201).json({"message": "Yei", "token": token})
+                } else {
+                    res.status(500).json({"message": "Password Not match"})
+                }
+            } else {
+                res.status(404).json({"message": "Email not found"})
+            }
         })
         .catch( err => {
             res.status(500).json({message: err.message})
@@ -35,7 +49,7 @@ module.exports = {
     },
 
     getOne: (req, res) => {
-        Model.User.findOne({id:req.params.id})
+        Model.User.findOne({where:{id:req.params.id}})
         .then( response => {
             res.status(200).json({response})
         })
