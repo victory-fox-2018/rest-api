@@ -12,6 +12,9 @@ All server response bodies and request bodies MUST be valid JSON Media Type mess
 ---
 ## URLs and Operations
 Below are the URLs and the operations associated with them.
+---
+Main Route in Heroku
+````https://salty-fortress-47221.herokuapp.com/````
 
 ---
 #### User
