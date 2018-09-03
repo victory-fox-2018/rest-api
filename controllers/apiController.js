@@ -10,7 +10,7 @@ module.exports = {
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
-            role: req.body.role
+            role: `client`
         }
 
         User.create(dataInput)
