@@ -4,14 +4,71 @@
 
 ## User attributes:
 * id (Number)
-* firstName (String)
-* lastName (String)
+* name (String)
 * email (String)
 * username (String)
 * password (String)
 * role (String)
 
 ## User Collection
+
+### Sign up with new user info
+* URL
+
+  /api/signup
+
+* Method
+
+  POST
+
+* Input
+  ```
+  {
+    name: 'Anie Doe',
+    email: 'aniedoe@mail.com',
+    username: 'aniedoe',
+    password: '123'
+  }
+  ```
+
+* Output
+  ```
+  {
+    user: {
+      id: 2,
+      name: 'Anie Doe',
+      email: 'aniedoe@mail.com',
+      username: 'aniedoe',
+      password: '123',
+      role: 'client'
+    }
+  }
+  ```
+
+### Sign in while get an access token based on credentials
+----
+* URL
+
+  /api/signin
+
+* Method
+
+  POST
+
+* Input
+  ```
+  {
+    username: 'johndoe',
+    password: '123'
+  }
+  ```
+
+* Output
+  ```
+  {
+    message: 'sign in successfully'
+  }
+  ```
 
 ### Get all the users:
 ----
@@ -29,17 +86,15 @@
   [
     {
       id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
+      name: 'John Doe',
       email: 'johndoe@mail.com',
       username: 'johndoe',
       password: '123',
-      role: 'client'
+      role: 'admin'
     },
     {
       id: 2,
-      firstName: 'Anie',
-      lastName: 'Doe',
+      name: 'Annie Doe',
       email: 'aniedoe@mail.com',
       username: 'aniedoe',
       password: '123',
@@ -74,8 +129,7 @@
   {
     user: {
       id: 2,
-      firstName: 'Anie',
-      lastName: 'Doe',
+      name: 'Annie Doe',
       email: 'aniedoe@mail.com',
       username: 'aniedoe',
       password: '123',
@@ -97,13 +151,10 @@
 * Input
   ```
   {
-    id: 2,
-    firstName: 'Anie',
-    lastName: 'Doe',
+    name: 'Annie Doe',
     email: 'aniedoe@mail.com',
     username: 'aniedoe',
-    password: '123',
-    role: 'client'
+    password: '123'
   }
   ```
 
@@ -112,8 +163,7 @@
   {
     user: {
       id: 2,
-      firstName: 'Anie',
-      lastName: 'Doe',
+      name: 'Annie Doe',
       email: 'aniedoe@mail.com',
       username: 'aniedoe',
       password: '123',
@@ -167,67 +217,16 @@
 * Input
   ```
   {
-    id: 2,
-    firstName: 'Anie',
-    lastName: 'Doe',
+    name: 'Annie Doe',
     email: 'aniedoe@mail.com',
     username: 'aniedoe',
-    password: '123',
-    role: 'client'
+    password: '123'
   }
   ```
 
 * Output
   ```
   {
-    user: {
-      id: 2,
-      firstName: 'Jenni',
-      lastName: 'Doe',
-      email: 'jennidoe@mail.com',
-      username: 'doe',
-      password: '123',
-      role: 'client'
-    }
-  }
-  ```
-
-### Update a user with specific new info
-----
-* URL
-
-  /api/users/:id
-
-* Method
-  
-  PATCH
-
-  Parameters | Type
-  ----- | ----
-  :id | Number
-
-* Input
-  ```
-  /api/users/1
-  ```
-
-  ```
-  {
-    role: 'admin'
-  }
-  ```
-
-* Output
-  ```
-  {
-    user: {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'johndoe@mail.com',
-      username: 'johndoe',
-      password: '123',
-      role: 'admin'
-    }
+    message: 'Updated'
   }
   ```
