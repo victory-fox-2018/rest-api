@@ -1,7 +1,7 @@
 # Rest Api Documentation
 
 ## How to Run?
-https://immense-cliffs-49536.herokuapp.com/
+https://immense-cliffs-49536.herokuapp.com/api/signup
 
 ## List of Routes:
 Route | HTTP | Dscription
