@@ -1,8 +1,6 @@
 # My App Name
 Demo app with basic REST API.
 
-### [Demo Server](http://blog-ws.wahyudisetiaji.xyz)
-
 ## Rest API
 List of user routes:
 
