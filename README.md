@@ -9,3 +9,5 @@ Route               HTTP    Description
 /api/users          POST    Create a user (admin only)
 /api/users/:id      DELETE  Delete a user (admin only)
 /api/users/:id      PUT     Update a user wih new info (admin and authenticated user)
+
+URL Heroku:
