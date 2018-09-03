@@ -1,10 +1,43 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const USer = sequelize.define('User', {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    firstName: {
+      type : DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "first name is required"
+        }
+      }
+    },
+    lastName: {
+      type : DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "first name is required"
+        }
+      }
+    },
+    email: {
+      type : DataTypes.STRING,
+      unique: true,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "first name is required"
+        }
+      }
+    },
+    password:{
+      type : DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "first name is required"
+        }
+      }
+    },
     role: DataTypes.STRING
   }, {
     

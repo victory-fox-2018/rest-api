@@ -3,7 +3,7 @@ const express = require('express')
 const apiRouter = require('./routes/api');
 const app     = express()
 
-const port    = 4000
+const port    = process.env.POST || 4000
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:false}))
@@ -18,5 +18,3 @@ app.get('/', (req,res) => {
 app.listen(port, () => {
     console.log('Listening on port ', port)
 })
-
-// process.env.KEYS
