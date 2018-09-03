@@ -1,6 +1,6 @@
 # rest-api
 
-# Rest API :alien: :rage1: :metal:
+# Rest API :alien:
 
 #### List of authentication routes:
 
