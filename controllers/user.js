@@ -1,4 +1,3 @@
-require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const User = require('../models/').User;
 const crypto = require('crypto');
@@ -40,7 +39,7 @@ class Controller {
             const token = jwt.sign({
               username: user.username,
               role: user.role
-            }, 'shhh');
+            }, process.env.SECRET);
             res.status(200).json({
               message: `${user.username} successfully logged in`,
               token
