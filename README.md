@@ -16,22 +16,21 @@ Route                   | HTTP   | Description                                  
 ```` /api/users/:id ````| GET    | Get a single user (admin & authenticated user) | ````req.params.id````      | **JSON** of single user
 ```` /api/users ````    | POST   | Create a user (admin only)                     | data from ````req.body```` | 
 ```` /api/users/:id ````| DELETE | Delete a user (admin only)                     | ````req.params.id````      | 
-```` /api/users/:id ````| PUT    | Update a user with new info (admin & authenticated user) | ````req.params.id```` & data from ````req.body```` | 
-```` /api/users/:id ````| PATCH  | Update a user with specific new info (admin & authenticated user) | ````req.params.id```` & data from ````req.body```` |
+```` /api/users/:id ````| PUT    | Update a user with new info (admin & authenticated user) | ````req.params.id```` & data from ````req.body```` |
 
 List of filter routes:
 
 Route                             | HTTP   | Description                       | Input          | Output
 --------------------------------- | ------ | --------------------------------- | -------------- | --------------------------
 ```` /api/users?name="{name}" ````| GET    | Get ````{name}```` match in users | ````{name}```` | **JSON** of matched users
-```` /api/users?name="{na}" ````  | GET    | Get ````{na}```` like in users    | ````{na}````   | **JSON**
+```` /api/users?name="{na}" ````  | GET    | Get ````{na}```` like in users    | ````{na}````   | **JSON** of users
 
 List of sign up & sign in routes:
 
-Route                             | HTTP   | Description                       | Input          | Output
---------------------------------- | ------ | --------------------------------- | -------------- | --------------------------
-```` /api/signup ````| POST    | Sign up with new user info | new user data | 
-```` /api/signin ````  | POST    | Sign in while get an access token based on credentials   | user data & credentials | 
+Route                 | HTTP   | Description                                              | Input                   | Output
+--------------------- | ------ | -------------------------------------------------------- | --------------          | -------------------
+```` /api/signup ```` | POST   | Sign up with new user info                               | new user data           | 
+```` /api/signin ```` | POST   | Sign in while get an access token based on credentials   | user data & credentials | token from jwt
 
 ---
 ### Usage
