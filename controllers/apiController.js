@@ -159,7 +159,7 @@ module.exports = {
             update[key] = values[index]
         })
         // res.send(update)
-        console.log('masukkkk')
+        console.log('masukkkk')``
         User.update(update,{where:{id:req.params.id}})
             .then(userUpdated =>{
 
