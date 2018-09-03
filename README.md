@@ -1,5 +1,6 @@
 # My App Name
 Demo app with basic REST API
+
 # REST API
 List of routes:
 
@@ -12,9 +13,11 @@ Route          | HTTP   | Description
 /api/users     | POST   | Create a user (admin only)
 /api/users/:id | DELETE | Delete a user (admin only)
 /api/users/:id | PUT    | Update a user with new info (admin and authenticated user)
+---------------|--------|-----------------------------------------------------------
+
 #Usage
 With only npm:
 npm install
 npm start (node) / npm run dev (nodemon)
 
-###### Access the website via http://localhost:3000 or API via http://localhost:3000/api
+##### Access the website via http://localhost:3000 or API via http://localhost:3000/api
