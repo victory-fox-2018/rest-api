@@ -1,9 +1,9 @@
 # Rest Api Documentation
 
-## How to run ?
+## How to Run ?
 http://localhost:3000
 
-## List of routes:
+## List of Routes:
 Route | HTTP | Dscription
 ----- | ---- | ----------
 /api/signup | POST | Sign up with new user info
