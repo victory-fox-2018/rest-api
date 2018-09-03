@@ -3,7 +3,7 @@ const express = require('express')
 const apiRouter = require('./routes/api');
 const app     = express()
 
-const port    = process.env.POST || 4000
+const port    = process.env.PORT || 4000
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:false}))
