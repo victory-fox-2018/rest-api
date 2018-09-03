@@ -3,10 +3,54 @@ module.exports = (sequelize, DataTypes) => {
   const encrypt = require('../helpers/encrypt');
 
   const User = sequelize.define('User', {
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        required: function(val, next) {
+          if(!val) {
+            next('Name is required');
+          } else {
+            next();
+          }
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        required: function(val, next) {
+          if(!val) {
+            next('Email is required');
+          } else {
+            next();
+          }
+        }
+      }
+    },
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        required: function(val, next) {
+          if(!val) {
+            next('Username is required');
+          } else {
+            next();
+          }
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        required: function(val, next) {
+          if(!val) {
+            next('Password is required');
+          } else {
+            next();
+          }
+        }
+      } 
+    },
     role: DataTypes.STRING
   }, {
     hooks: {
