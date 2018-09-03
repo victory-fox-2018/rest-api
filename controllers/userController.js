@@ -22,7 +22,7 @@ const showUserById = (req, res) => {
     .then((data) => {
         if (data) {
             res.status(201).json({
-                message: `Get user data${data.firstName} ${data.lastName} with id ${req.params.id}`,
+                message: `Get user data ${data.firstName} ${data.lastName} with id ${req.params.id}`,
                 data
             })
         } else {
@@ -81,7 +81,7 @@ const login = (req, res) => {
             if (passwordCheck) {
                 let token = jwt.sign({
                     email: data.email,
-                    role: data.role.toLowerCase()
+                    role: data.role.toLowerCase(),
                 }, process.env.JWT_SECRET)
                 console.log('ini token ===>', token)
                 
@@ -108,22 +108,23 @@ const login = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-    const {firstName, lastName, email, gender, role, password} = req.body
+    var salt = bcrypt.genSaltSync(8)
+    var hash = bcrypt.hashSync(req.body.password, salt)
+    const {firstName, lastName, email, gender, role} = req.body
     Model.User.update({
         firstName,
         lastName,
         email,
         gender,
         role,
-        password
+        password: hash
     }, 
     {
         where: {id: req.params.id}    
     })
-    .then((data) => {
+    .then(() => {
         res.status(201).json({
             message: `success update data with id ${req.params.id}`,
-            data
         })
     })
     .catch((err) => {
