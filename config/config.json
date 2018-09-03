@@ -11,13 +11,13 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "uikulxsjlazfid",
+    "password": "b7e6330c4127631355f13e2f7ed195d454f02621b117083089e1f2f47414b71f",
+    "database": "dffcc4j53uf3ng",
+    "host": "ec2-54-235-86-226.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
