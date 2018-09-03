@@ -142,34 +142,45 @@ module.exports = {
     updateUser: function(req, res) {
         let salt = bcryptjs.genSaltSync(8);
         let hashedPassword = bcryptjs.hashSync(req.body.password, salt);
-
-        User.update({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: hashedPassword
-        },{
-            where: {id: req.params.id}
-        })
-        .then((result) => {
-            res.status(200).json({
-                message: "Update User Success !",
-            });
-            
-        }).catch((err) => {
-            res.status(400).json({
-                message: err.message
-            });
-        });
         
+        if(req.loggedInUser.id == req.params.id) {
+            User.update({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                password: hashedPassword
+            },{
+                where: {id: req.params.id}
+            })
+            .then((result) => {
+                res.status(200).json({
+                    message: "Update User Success !",
+                });
+                
+            }).catch((err) => {
+                res.status(400).json({
+                    message: err.message
+                });
+            });
+        }else {
+            res.status(200).json({
+                message: "You dont have access to update !",
+            });
+        }  
     },
 
     deleteUser: function(req, res) {
         User.destroy({where: {id: req.params.id}})
-        .then(() => {
-            res.status(200).json({
-                msg: "Delete User Success !"
-            })
+        .then((result) => {
+            if(result) {
+                res.status(200).json({
+                    msg: "Delete User Success !"
+                })
+            }else {
+                res.status(200).json({
+                    msg: "User not found !"
+                })
+            }
         })
         .catch((err) => {
             res.status(400).json({

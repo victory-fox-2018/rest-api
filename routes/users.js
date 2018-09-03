@@ -9,7 +9,7 @@ router.post('/signup', signup);
 router.get('/', isLogin, isAdmin, getAll);
 router.get('/:id', isLogin, getOne);
 router.post('/', isLogin, isAdmin, createUser)
-router.put('/:id', isLogin, isAdmin, updateUser);
 router.delete('/:id', isLogin, isAdmin, deleteUser);
+router.put('/:id', isLogin, updateUser);
 
 module.exports = router;

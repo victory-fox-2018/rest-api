@@ -8,9 +8,10 @@ module.exports = {
         let decode = jwt.verify(token, process.env.JWT_SECRET)
 
         if(token){
-            User.findOne({email: decode.email})
+            User.findOne({where: {email: decode.email}})
             .then((data) => {
                 if(data){
+                    req.loggedInUser = data
                     next()
                 }else{
                     res.status(400).json({
@@ -31,15 +32,12 @@ module.exports = {
     },
 
     isAdmin: function(req, res, next) {
-        let token = req.headers.token
-        let decode = jwt.verify(token, process.env.JWT_SECRET)
-
-        if(decode.role === 'admin'){
+        if(req.loggedInUser.role === 'admin'){
             next()
         }else{
             res.status(401).json({
                 msg: 'Only Admin'
             })
         }
-        }
+    }
 }
