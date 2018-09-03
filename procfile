@@ -1,1 +1,1 @@
-web: node git ./bin/www
+web: node ./bin/www
