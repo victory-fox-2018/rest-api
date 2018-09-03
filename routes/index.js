@@ -6,6 +6,7 @@ var express = require('express'),
 /* GET home page. */
 router
     .post('/signup', create)
+    
     .post('/login', login)
 
     .post('/isLogin', isLogin)
