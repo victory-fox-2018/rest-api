@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "windra",
+    "password": 123456,
+    "database": "restAPI",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "lqmvxzzfeafbym",
+    "password": "334ee87d633f9a5b6f8cb5672841945b529bda02a46d39b008f1073669202257",
+    "database": "d8o2r3brmb8t6a",
+    "host": "ec2-50-17-194-186.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  }
+}
