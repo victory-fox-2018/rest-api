@@ -9,6 +9,5 @@ router.get('/',isLogin,isAdmin, getAll)
       .post('/',isLogin, isAdmin, create)
       .put('/:id', isLogin, update)
       .delete('/:id',isLogin, isAdmin, remove)
-      .post('/signup', signup)
-      .post('/signin',signin)
+
 module.exports = router;

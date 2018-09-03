@@ -95,21 +95,27 @@ module.exports = {
         });
     },
     update: (req, res) => {
-        User.update({
-            name: req.body.name
-        }, {
-           where:{ id: req.params.id}      
-        })
-        .then((result) => {
-            if(result[0] !== 0){
-                res.status(201).json({result, msg: 'update succes'})
-            }else{
-                res.status(201).json({msg: 'data not found'})
-            }
-        })
-        .catch((err) => {
-            res.status(400).json(err)
-        });
+        if(req.params.id == req.userLogin.id){
+            User.update({
+                name: req.body.name
+            }, {
+               where:{ id: req.params.id}      
+            })
+            .then((result) => {
+                if(result[0] !== 0){
+                    res.status(201).json({result, msg: 'update succes'})
+                }else{
+                    res.status(201).json({msg: 'data not found'})
+                }
+            })
+            .catch((err) => {
+                res.status(400).json(err)
+            });
+        }else{
+            res.status(403).json({
+                msg: 'you dont have acces to edit other user data'
+            })
+        }
     },
     remove: (req, res) => {
         User.destroy({where: {id : req.params.id}})
