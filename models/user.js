@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         user.updatedAt = new Date();
       },
       beforeUpdate: (user, options) => {
+        console.log('<=============== MASUK GA');
         user.password = encrypt(user.password);
         user.updatedAt = new Date();
       }
