@@ -5,5 +5,19 @@
     "database": "esee_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "esee_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "xfmlbnuxatxhrn",
+    "password": "81ed8c856d5d67928a6ebe4d794a0cba8b47727267726320f5d131a25eef93e2",
+    "database": "d50lau3lm4pmkh",
+    "host": "ec2-50-17-194-186.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
