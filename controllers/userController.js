@@ -1,5 +1,6 @@
 const { User } = require('../models')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs');
 const hashPassword = require('../helpers/hashPassword')
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
             .create({
                 name: req.body.name,
                 email: req.body.email,
-                password: hashPassword(req.body.password),
+                password: req.body.password,
                 role: req.body.role === '' ? defaultRole : 'admin'
             })
             .then(userRegistered => {
@@ -27,23 +28,24 @@ module.exports = {
             .findOne({
                 where:{
                     email: req.body.email,
-                    password: hashPassword(req.body.password)
                 }
             })
             .then(user => {
-                if (user){
+                let isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
+
+                if(isPasswordValid){
                     var token = jwt.sign({
                         id: user.id,
                         email: user.email,
                         role : user.role
                     }, process.env.secretkey)
-
+                    
                     res.status(200).json({
                         message: 'login successfully',
                         token: token
                     })
-                }else {
-                    res.status(404).json('email & password not found')
+                }else{
+                    res.status(404).json('email & password wrong')
                 }
             })
             .catch(err => {
@@ -85,7 +87,7 @@ module.exports = {
             .create({
                 name: req.body.name,
                 email: req.body.email,
-                password: hashPassword(req.body.password),
+                password: req.body.password,
                 role: 'member'
             })
             .then(userRegistered => {
