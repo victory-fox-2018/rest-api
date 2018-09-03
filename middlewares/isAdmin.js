@@ -12,10 +12,15 @@ module.exports = (req, res, next) => {
             if(response.role === 'admin') {
                 next()
             } else {
-                res.status(401).json({
+                res.status(403).json({
                     "message": "No Authorize"
                 })
             }
+        })
+        .catch( ()=> {
+            res.status(500).json({
+                "message": "Server error"
+            })
         })
     } else {
         res.status(401).json({
