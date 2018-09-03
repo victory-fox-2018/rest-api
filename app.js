@@ -47,7 +47,7 @@ app.post('/api/signin',function(req,res){
     }
     else{
       Model.findOne({
-          where: {name:req.body.user,password:req.body.password}
+          where: {name:req.body.user,password:Model.validPassword(req.body.password)}
       })
       .then(data=>{
         token=token
@@ -101,7 +101,12 @@ app.post('/api/users',isAdmin,function(req,res){
       email: req.body.email,
       role: req.body.role
    }
-  )
+ ).then(data=>{
+   res.send(data)
+ })
+ .catch(err=>{
+   res.send(err)
+ })
 })
 
 app.post('/api/signup',function(req,res){
@@ -113,6 +118,12 @@ app.post('/api/signup',function(req,res){
         role: req.body.role
      }
     )
+    .then(data=>{
+      res.send(data)
+    })
+    .catch(err=>{
+      res.send(data)
+    })
 })
 
 
