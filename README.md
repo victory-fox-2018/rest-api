@@ -1,6 +1,6 @@
 # Rest Api Documentation
 
-## How to Run ?
+## How to Run?
 http://localhost:3000
 
 ## List of Routes:
