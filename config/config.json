@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "ucstxcpj",
+    "password": "Te9gchNgkLCnA6ZJohWBekubQprLrg-_",
+    "database": "ucstxcpj",
+    "host": "baasu.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
