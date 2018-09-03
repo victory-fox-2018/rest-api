@@ -6,7 +6,7 @@ const Models = require('../models');
 const User = Models.User;
 
 function IsLogin(req,res,next) {
-    jwt.verify(req.headers.token,'rahasia',(err,decoded)=>{
+    jwt.verify(req.headers.token,process.env.SECRET,(err,decoded)=>{
         if(err){
             res.status(500).json({msg : err})
         }else if(decoded){

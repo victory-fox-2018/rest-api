@@ -4,7 +4,7 @@ const crypto =require('crypto');
 
 function HashPassword(str) {
     
-    const secret = 'rest-api'
+    const secret = process.env.SECRET
 
     const hash = crypto.createHmac('sha256',secret)
                     .update(str)
