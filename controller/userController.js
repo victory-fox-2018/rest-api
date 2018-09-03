@@ -71,7 +71,7 @@ module.exports = {
     });
   },
 
-  signUp : function( req,res ){
+  create : function( req,res ){
     const secret = process.env.PASSWORD_SECRET;
     const hash = crypto.createHmac('sha256', secret)
                    .update(req.body.password)

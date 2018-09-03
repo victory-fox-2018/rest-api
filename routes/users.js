@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { findAll,findOne,remove,create,update,signIn,signUp } = require('../controller/userController');
+const { findAll,findOne,remove,create,update,signIn } = require('../controller/userController');
 const isLogin = require('../middleware/isLogin');
 const isAdmin = require('../middleware/isLogin');
 
@@ -12,7 +12,7 @@ router.get('/',isLogin,isAdmin,findAll);
 router.delete('/:id',isLogin,isAdmin,remove);
 
 //create new user
-router.post('/',isLogin,isAdmin,signUp);
+router.post('/',isLogin,isAdmin,create);
 
 //update
 router.put('/:id',isLogin,update);
@@ -20,7 +20,7 @@ router.put('/:id',isLogin,update);
 //find one
 router.get('/:id',isLogin,findOne);
 
-router.post('/signup',signUp);
+router.post('/signup',create);
 router.post('/signin',signIn);
 
 

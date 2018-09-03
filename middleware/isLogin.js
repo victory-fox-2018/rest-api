@@ -23,6 +23,7 @@ const isLogin = (req,res,next)=>{
       })
 
       .catch(err=>{
+        console.log(error);
         res.status(500).json({
           msg : err
         });
