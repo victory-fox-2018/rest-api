@@ -2,7 +2,9 @@ const Model=require('./models').User
 var express=require('express')
 fs=require('fs')
 var jwt = require('jsonwebtoken');
-
+var isLogin=require('./middleware/helper.js').isLogin
+var isAdmin=require('./middleware/helper.js').isAdmin
+var isSamePerson=require('./middleware/helper.js').isSamePerson
 
 const User=fs.readFileSync('data.json',"utf-8");
 
@@ -12,13 +14,30 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
 
-app.get('/users', function (req, res) {
+app.get('/users',isAdmin,function (req, res) {
    Model.findAll().then(data=>{
      res.status(200).json(data)
    })
    .catch(err=>{
      res.status(200).json(err)
    })
+})
+
+app.put('/api/users/:id',isLogin,isSamePerson,function(req,res){
+    console.log(req.params.id)
+    Model.update(
+    {
+      name: req.body.user,email: req.body.email
+    },
+    {
+      where:{id:req.params.id}
+    })
+    .then(data=>{
+      res.status(200).json(data)
+    })
+    .catch(err=>{
+      res.status(200).json(err)
+    })
 })
 
 app.post('/api/signin',function(req,res){
@@ -37,31 +56,8 @@ app.post('/api/signin',function(req,res){
     }
 })
 })
-
-app.get('/login',function(req,res){
-  jwt.verify(req.headers.token,'secret',function (err, decoded){
-     if(err){
-       res.status(200).json(err)
-     }
-     else{
-       Model.findOne({
-         where:{name:decoded.user}}
-       ).then(data=>{
-         res.status(200).json(data)
-       })
-       .catch(err=>{
-         res.status(200).json(err)
-       })
-     }
-  })
-})
-
-app.get('/admin',function(req,res){
-
-})
-
 //app.get | **/api/users/:id** | GET  | Get a Single User Info (Admin and Authenticated User) |
-app.get('/api/users/:id',function(req,res){
+app.get('/api/users/:id',isLogin,isAdmin,function(req,res){
   Model.findOne({
     where:{id:req.params.id}
   }).then(data=>{
@@ -80,6 +76,7 @@ app.post('/api/signup',function(req,res){
   res.status(200).json(JSON.stringify(obj))
 })
 
+
 app.post('/api/users',function(req,res){
   let obj={user:req.body.user,
   role:req.body.role,age:req.body.age,location:req.body.location}
@@ -87,7 +84,41 @@ app.post('/api/users',function(req,res){
   res.status(200).json(obj)
 })
 
-console.log(User)
+app.delete('/api/users/:id',isAdmin,function(req,res){
+  Model.destroy({
+    where:{
+      id:req.params.id
+    }
+  }
+)
+})
+
+app.post('/api/users',isAdmin,function(req,res){
+  Model.create(
+    {
+      name: req.body.user,
+      password: req.body.password,
+      email: req.body.email,
+      role: req.body.role
+   }
+  )
+})
+
+app.post('/api/signup',function(req,res){
+    Model.create(
+    {
+        name: req.body.user,
+        password: req.body.password,
+        email: req.body.email,
+        role: req.body.role
+     }
+    )
+})
+
+
+
+
+
 app.listen(3000, function () {
   console.log('Ready');
 });
