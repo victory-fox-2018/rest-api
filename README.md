@@ -7,27 +7,81 @@
 ### REST API
 ##### List of basic routes:
 
-        Route            |  HTTP  |        Description          |       input         |     output
--------------------------|--------|-----------------------------|---------------------|----------------
-/api/hello?name={name}|GET|print hello, {name} !|{name} of variable |JSON
+### /api/hello?name={name} 
+##### HTTP : GET
+##### Description : print hello, {name} !
+##### Input : {name} of variable 
+##### Output : JSON
 
-##### List of user routes:
 
-        Route              |  HTTP  |             Description                 |     input               |     output
----------------------------|--------|-----------------------------------------|-------------------------|----------------
-/api/users|GET|Get all the users||JSON    
-/api/users/:id|GET|Get a single user|id of user|JSON 
-/api/users|POST|Create a user|any parameter required |    
-/api/users/:id|DELETE|Delete a user|id of user|      
-/api/users/:id|PUT|Update a user with new info|id of user|  
-/api/users/:id|PATCH|Update a user with specific new info|id of user|      
+### List of user routes:
 
-##### LIst of filter routes:
 
-        Route              |  HTTP  |        Description            |   input                                  |   output
----------------------------|--------|-------------------------------|------------------------------------------|---------------
-/api/users?name="{name}"|GET|Get {name} match in users|{name} of variable|   JSON
-/api/users?name="{na}"|GET|Get {na} like in users|{na} or partial description of variable|JSON  
+### /api/signup 
+##### HTTP : POST
+##### Description : Sign up with new user info
+##### Input : any parameter required
+##### Output : -
+
+### /api/signin
+##### HTTP : POST
+##### Description : Sign in while get an access token based on credentials
+##### Input : any parameter required
+##### Output : -
+
+### /api/users 
+##### HTTP : GET
+##### Description : Get all the users info (admin only)
+##### Input : -
+##### Output : JSON
+
+### /api/users/:id 
+##### HTTP : GET
+##### Description : Get a single user (admin and authenticated user)
+##### Input : id of user
+##### Output : JSON
+
+### /api/users 
+##### HTTP : POST
+##### Description : Create a user (admin only)
+##### Input : any parameter required
+##### Output : -
+
+### /api/users/:id 
+##### HTTP : DELETE
+##### Description : Delete a user (admin only)
+##### Input : id of user
+##### Output : -
+
+### /api/users/:id 
+##### HTTP : PUT
+##### Description : Update a user with new info (admin and authenticated user)
+##### Input : id of user
+##### Output : -
+
+### /api/users/:id 
+##### HTTP : PATCH
+##### Description : Update a user with specific new info
+##### Input : id of user
+##### Output : -
+ 
+
+
+### List of filter routes:
+
+### /api/users?name="{name}" 
+##### HTTP : GET
+##### Description : Get {name} match in users
+##### Input : {name} of variable
+##### Output : JSON
+
+### /api/users?name="{na}" 
+##### HTTP : GET
+##### Description : Get {na} like in users
+##### Input : {na} or partial description of variable
+##### Output : JSON
+
+
 
 
 #Usage
