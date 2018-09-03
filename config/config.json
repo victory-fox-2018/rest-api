@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "andresudi",
+    "password": " ",
+    "database": "rest_API",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
