@@ -2,20 +2,68 @@
 
 const Models = require('../models');
 const User = Models.User;
+var jwt = require('jsonwebtoken');
+const HashPassword = require('../helpers/HashPassword')
 
 class UserController{
+
+    //sign up
+    static signUp(req,res){
+        User.create({name : req.body['name'], username: req.body['username'],
+                        password: req.body['password'], role: req.body['role'] })
+                .then(row=>{
+                    res.status(200).json({msg : 'Sign Up Success'});
+                })
+                .catch(err =>{
+                    res.status(500).json({msg : err});
+                })
+    }
+
+    // sign in
+    static signIn(req,res){
+        let hash = HashPassword(req.body['password'])
+        User.findOne({where : {username : req.body['username'], password : hash}})
+            .then(row =>{
+                // console.log('--------')
+                // console.log('TEST',row['dataValues']['role'])
+                // res.status(200).json({data : row});
+                if(row){
+                    jwt.sign({
+                        id : row['dataValues']['id'],
+                        username : req.body['username'],
+                        password : req.body['password'],
+                        role : row['dataValues']['role']          
+                    },'rahasia',(err,token)=>{
+                        if(err){
+                            res.status(500).json({msg : err.message})
+                        }else if(token){
+                            res.status(200).json({
+                                msg: 'Signin success',
+                                token : token
+                            })
+                        }
+                    })
+                }
+            })
+            .catch(err =>{
+                res.status(500).json({msg : err});
+            })
+    }
+
+    // create user for admin
     static createUser(req,res){
         
         User.create({name: req.body['name'], username: req.body['username'],
                         password: req.body['password'], role: req.body['role'] })
              .then(row =>{
-                res.status(200).json({msg: 'Create Data Success'})
+                res.status(200).json({msg: 'Create Data Success'});
              })
              .catch(err =>{
                 res.status(500).json({msg: err});
              })           
     }
 
+    // find all user for admin
     static findUserAll(req,res){
 
         User.findAll()

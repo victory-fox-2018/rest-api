@@ -1,0 +1,16 @@
+'use strict'
+
+const crypto =require('crypto');
+
+function HashPassword(str) {
+    
+    const secret = 'rest-api'
+
+    const hash = crypto.createHmac('sha256',secret)
+                    .update(str)
+                    .digest('hex')
+                    
+    return hash;
+}
+
+module.exports = HashPassword
