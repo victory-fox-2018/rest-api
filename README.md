@@ -2,6 +2,8 @@
 
 # USER
 
+https://glacial-island-46243.herokuapp.com/
+
 ## User attributes:
 * id (Number)
 * name (String)
@@ -211,7 +213,7 @@
   PUT
 
   Parameters | Type
-  ----- | ----
+  ---------- | ----
   :id | Number
 
 * Input
