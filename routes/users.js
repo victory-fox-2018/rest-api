@@ -4,18 +4,12 @@ const User = require('../controllers/user');
 const {isLogin} = require('../midleware/isLogin');
 const {isAdmin} = require('../midleware/isAdmin');
 
-
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
 router.post('/signup', User.signup);
 router.post('/signin', User.signin);
 router.get('/', User.findAll);
-// router.get('/:id', User.findOne);
+router.get('/:id', User.findOne);
 router.post('/', isLogin, isAdmin, User.create);
-router.post('/:id', User.erase);
-// router.put('/:id', User.update);
+router.delete('/:id', isLogin, isAdmin, User.erase);
+router.put('/:id', isLogin, User.update);
 
 module.exports = router;
