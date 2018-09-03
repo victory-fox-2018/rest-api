@@ -73,10 +73,18 @@ module.exports = {
         User
             .findById(req.params.id)
             .then(user => {
-                res.status(200).json({
-                    message: 'display user successfully',
-                    data: user
-                })
+                if(user){
+                    res.status(200).json({
+                        message: 'display user successfully',
+                        name: user.name,
+                        email: user.email
+                    })
+                }else{
+                    res.status(200).json({
+                        message: `User with id:${req.params.id} not found`
+                    })
+                }
+                
             })
             .catch(err => {
                 res.status(500).json(err.message)
@@ -107,10 +115,16 @@ module.exports = {
                     id: req.params.id
                 }
             })
-            .then(() => {
-                res.status(200).json({
-                    message: 'user deleted successfully',
-                })
+            .then(affectedRows => {
+                User
+                    .findAll()
+                    .then(users => {
+                        res.status(200).json({
+                            message: `User deleted successfully`,
+                            deletedUser: affectedRows,
+                            data: users
+                        })
+                    })
             })
             .catch(err => {
                 res.status(500).json(err.message)

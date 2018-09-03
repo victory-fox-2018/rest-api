@@ -22,6 +22,27 @@ module.exports = (sequelize, DataTypes) => {
         isEmail:{
           args: true,
           msg: `formal email wrong`
+        },
+        isEmailUnique(value, cb){
+          User
+            .findOne({
+              where:{
+                email: value,
+                id:{
+                  [Op.ne]: this.id
+                }
+              }
+            })
+            .then(users => {
+              if(users){
+                cb('email already taken')
+              }else{
+                cb()
+              }
+            })
+            .catch(err => {
+              cb(err.message)
+            })
         }
       }
     },
