@@ -36,7 +36,7 @@ module.exports = {
                         id: user.id,
                         email: user.email,
                         role : user.role
-                    }, 'secret')
+                    }, process.env.secretkey)
 
                     res.status(200).json({
                         message: 'login successfully',

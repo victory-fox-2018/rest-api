@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 module.exports = (req, res, next) => {
     let token = req.headers.token
     if (token){
-        let decoded = jwt.verify(token, 'secret')
+        let decoded = jwt.verify(token, process.env.secretkey)
         User
             .findOne({
                 where:{
