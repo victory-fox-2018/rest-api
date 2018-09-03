@@ -4,8 +4,8 @@ const Encryption = require('../helpers/encryption')
 
 class UserController {
 
-    static signUp(req, res) {
-        userModel.create({
+    static create(req, res) {
+        return userModel.create({
             name: req.body.name,
             email: req.body.email,
             password: Encryption.passwordGenerator(req.body.password),
@@ -13,6 +13,10 @@ class UserController {
             createdAt: new Date(),
             updatedAt: new Date()
         })
+    }
+    
+    static signUp(req, res) {
+        UserController.create(req, res)
         .then(() => {
             res.status(201).json({message: `User (${req.body.name}) sign up successfull`})
         })
@@ -68,14 +72,7 @@ class UserController {
     }
 
     static add(req, res) {
-        userModel.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: Encryption.passwordGenerator(req.body.password),
-            role: 'user',
-            createdAt: new Date(),
-            updatedAt: new Date()
-        })
+        UserController.create(req, res)
         .then(() => {
             res.status(201).json({message: `User (${req.body.name}) successfully added`})
         })
