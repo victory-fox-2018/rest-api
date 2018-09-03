@@ -2,6 +2,8 @@
 
 ## Route 
 
+Base URL for deploy : `https://enigmatic-lowlands-50744.herokuapp.com/`
+
 Route|Http|Description
 ------|-----|-----------
 `/api/signup`|POST|Signup with new user info
