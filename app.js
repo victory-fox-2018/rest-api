@@ -1,14 +1,16 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+
 const home = require('./routes');
 const users = require('./routes/users');
 
-
 const port = 3000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.listen(port,()=>{
