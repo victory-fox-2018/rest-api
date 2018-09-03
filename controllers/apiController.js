@@ -1,5 +1,6 @@
 const jwt = require(`jsonwebtoken`)
 const Model = require('../models/')
+const hash = require('../helpers/hashPassword')
 const User = Model.User
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
-            role: `client`
+            role: req.body.role
         }
 
         User.create(dataInput)
@@ -69,7 +70,7 @@ module.exports = {
     login: function(req,res){
         let dataLogin = {
             email: req.body.email,
-            password: req.body.password
+            password: hash(req.body.email, req.body.password)
         }
 
         User.findOne({where: dataLogin})
@@ -81,7 +82,7 @@ module.exports = {
                         firstName: user.firstName,
                         lastName: user.lastName,
                         role: user.role
-                    },`rahasia boy`, function(err,token){
+                    }, process.env.SECRET, function(err,token){
                         res.status(200).json({
                            message: `Success Login`,
                            token: token
@@ -149,27 +150,23 @@ module.exports = {
     },
 
     update: function(req,res){
-        // let userLogin = req.decoded
         let keys = Object.keys(req.body);
         let values = Object.values(req.body);
-        
         let update = {}
 
         keys.forEach((key,index) =>{
             update[key] = values[index]
         })
-        // res.send(update)
-        console.log('masukkkk')``
+
         User.update(update,{where:{id:req.params.id}})
             .then(userUpdated =>{
 
                 values.forEach( ( value, index ) =>{
                     req.decoded[`${keys[index]}`] = value
                 })
-                // req.decod
+
                 res.status(200).json({
                     message: `SuccessFull Update`,
-                    // user: userUpdated
                 })
             })
             .catch(err =>{

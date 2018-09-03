@@ -6,7 +6,7 @@ module.exports = {
     authentication: function(req,res,next){
         var token = req.headers.token
         if(token){
-            jwt.verify(token, `rahasia boy`, function(err, decoded){
+            jwt.verify(token, process.env.SECRET, function(err, decoded){
                 if(err){
                     res.status(500).json({
                         message: err.message
@@ -59,8 +59,7 @@ module.exports = {
     itSelf: function(req,res,next){
         let id = Number(req.params.id)
         let idLogin = Number(req.decoded.id)
-        // console.log(id)
-        // res.send(req.decoded["id"])
+
         if(id === idLogin){
             next()
         }else{
