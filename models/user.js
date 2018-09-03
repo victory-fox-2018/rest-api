@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
 
-  User.beforeCreate(function(user){
-    user.salt = bcrypt.genSalt(10)
-    user.password = bcrypt.hashSync(user.password, user.salt)
-  })
 
   return User;
 };
