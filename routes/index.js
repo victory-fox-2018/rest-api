@@ -8,14 +8,14 @@ const {
   updateUser,
   deleteUserData
 } = require("../controllers/userController.js");
-const authorization = require('../middlewares/authorization')
+const isAdmin = require('../middlewares/isAdmin')
 const isLogin = require('../middlewares/isLogin')
 
-router.get('/users', authorization, showAllUser)
-router.post('/users', authorization, register)
+router.get('/users', isLogin, isAdmin, showAllUser)
+router.post('/users', isLogin, isAdmin, register)
 router.get('/users/:id', isLogin, showUserById)
 router.put('/users/:id', isLogin, updateUser)
-router.delete('/users/:id', authorization, deleteUserData)
+router.delete('/users/:id', isLogin, isAdmin, deleteUserData)
 
 router.post('/signup', register)
 router.post('/signin', login)

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const authorization = (req, res, next) => {
+const isAdmin = (req, res, next) => {
     let token = req.headers.token
 
     if (token) {
@@ -9,7 +9,7 @@ const authorization = (req, res, next) => {
             if (decoded.role == 'admin') {
                 next()
             } else {
-                res.status(400).json({
+                res.status(403).json({
                     msg: 'you are not allowed to do this action'
                 })
             }
@@ -21,4 +21,4 @@ const authorization = (req, res, next) => {
     }
 }
 
-module.exports = authorization
+module.exports = isAdmin

@@ -4,7 +4,7 @@ const Model = require('../models/')
 const isLogin = (req, res, next) => {
     let token = req.headers.token
     let decode = jwt.verify(token, process.env.JWT_SECRET)
-    console.log('ini decode dari isLogin ===>',decode)
+    console.log('ini decode dari isLogin ===>', decode)
 
     if (token) {
         Model.User.findOne({
@@ -14,7 +14,7 @@ const isLogin = (req, res, next) => {
             if (data) {
                 next()
             } else {
-                res.status(200).json({
+                res.status(400).json({
                     message: 'User is not Authenticated'
                 })
             } 
@@ -25,7 +25,7 @@ const isLogin = (req, res, next) => {
             })
         })
     } else {
-        res.status(200).json({
+        res.status(400).json({
             message: 'no token'
         })
     }

@@ -26,7 +26,7 @@ const showUserById = (req, res) => {
                 data
             })
         } else {
-            res.status(201).json({
+            res.status(400).json({
                 message: `data not found`
             })
         }
@@ -40,24 +40,33 @@ const showUserById = (req, res) => {
 
 const register = (req, res) => {
     const {firstName, lastName, email, gender, role, password} = req.body
-    Model.User.create({
-       firstName,
-       lastName,
-       email,
-       gender,
-       role,
-       password
-    })
-    .then((data) => {
-        res.status(201).json({
-            message: `success add new user`,
-            data
-        })
-    })
-    .catch((err) => {
-        res.status(400).json({
-            message: err.message
-        })
+    Model.User.findOne({ where: {email: email}})
+    .then((user) => {
+        if (!user || user == undefined) {
+            Model.User.create({
+                firstName,
+                lastName,
+                email,
+                gender,
+                role,
+                password
+             })
+             .then((data) => {
+                 res.status(201).json({
+                     message: `success add new user`,
+                     data
+                 })
+             })
+             .catch((err) => {
+                 res.status(400).json({
+                     message: err.message
+                 })
+             })
+        } else {
+            res.status(400).json({
+                message: 'email is already exist'
+            })
+        }
     })
 }
 
@@ -81,12 +90,12 @@ const login = (req, res) => {
                     token
                 })
             } else {
-                res.status(200).json({
+                res.status(400).json({
                     message: `password is invalid`
                 })
             } 
         } else {
-            res.status(200).json({
+            res.status(400).json({
                 message: `email is invalid`
             })
         }
