@@ -1,0 +1,36 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "<!-- Quotes --> >Muhammad Khodhi Robbani <!-- Headings # --> # __RetroWeb App__ `demo app with REST API` <!-- link --> link :  [retroweb.com](http://www.retroweb.com)",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.3.0",
+    "method-override": "^3.0.0",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.0.0",
+    "swal": "^0.1.0",
+    "sweetalert": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khodhirob/rest-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khodhirob/rest-api/issues"
+  },
+  "homepage": "https://github.com/khodhirob/rest-api#readme"
+}

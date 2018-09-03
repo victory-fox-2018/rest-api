@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "hacktiv8",
+    "password": 1234,
+    "database": "retroweb",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "keesssspnbjsrj",
+    "password": "dc736c6b3537eefd083dcee47c93bc7d88a9a4aa831b3cf477a589288a66c2a8",
+    "database": "dd9fbr5iea2442",
+    "host": "ec2-54-221-210-97.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  }
+}
