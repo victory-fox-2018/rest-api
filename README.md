@@ -22,3 +22,7 @@ npm run dev
 ```
 
 Access the website via `http://localhost:3000` or API via `http://localhost:3000/api`
+
+# Demo
+
+Live demo at: (https://stark-island-66864.herokuapp.com/)
