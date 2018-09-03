@@ -1,7 +1,8 @@
 'use strict';
-const hassPassword = require('../helpers/hashPassword')
 
 module.exports = (sequelize, DataTypes) => {
+  const hassPassword = require('../helpers/hashPassword')
+  const Op = sequelize.Op
   const User = sequelize.define('User', {
     name:{
       type: DataTypes.STRING,
