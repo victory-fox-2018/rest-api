@@ -1,39 +1,52 @@
 # rest-api
 
+# My Application
+
+## REST API
+
+List of basic routes :
+|Route |HTTP |Description |
+|--|--|--|
+| /api/hello?name="{name}" |GET |Print hello, {name} ! |
+List of user routes :
+
 ## **Show All User**
 
 Returns json data from all user.
 
 - **URL**
 
-  /api/users
+/api/users
 
 - **Method:**
 
-  `GET`
+`GET`
 
 - **URL Params**
 
-  None
+None
 
 - **Data Params**
 
-  None
+None
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `{ id : 12, name : "Michael Bloom" }`
+* **Code:** 200
+
+**Content:** `[ { id : 12, name : "Michael Bloom",email :"johndoe@mail.com" },{ id : 32, name : "Michael Jackson" email : michaeljackson@mail.com}]`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "There are no users" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "There are no users" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
+
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
 
 ## **Get A Single User**
 
@@ -41,36 +54,39 @@ Returns json data from a single user.
 
 - **URL**
 
-  /api/users/:id
+/api/users/:id
 
 - **Method:**
 
-  `GET`
+`GET`
 
 - **URL Params**
 
-  **Required:**
+**Required:**
 
-  `id=[integer]`
+`id=[integer]`
 
 - **Data Params**
 
-  None
+None
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `{ id : 12, name : "John Doe", email : "johndoe@gmail.com" }`
+* **Code:** 200
+
+**Content:** `{ id : 12, name : "John Doe", email : "johndoe@gmail.com" }`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "User doesn't exist" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "User doesn't exist" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
+
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
 
 ## **Create A User**
 
@@ -78,39 +94,45 @@ Create a user
 
 - **URL**
 
-  /api/users
+/api/users
 
 - **Method:**
 
-  `POST`
+`POST`
 
 - **URL Params**
 
-  None
+None
 
 - **Data Params**
 
 ```
-  {
-  name : STRING,
-  email : STRING
-  }
+{
+
+name : STRING,
+
+email : STRING
+
+}
 ```
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `Success adding user`
+* **Code:** 200
+
+**Content:** `Success adding user`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "Failed adding user" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "Failed adding user" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
+
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
 
 ## **Delete A User**
 
@@ -118,36 +140,39 @@ Delete a user.
 
 - **URL**
 
-  /api/users/:id
+/api/users/:id
 
 - **Method:**
 
-  `DELETE`
+`DELETE`
 
 - **URL Params**
 
-  **Required:**
+**Required:**
 
-  `id=[integer]`
+`id=[INTEGER]`
 
 - **Data Params**
 
-  None
+None
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `Success deleting user`
+* **Code:** 200
+
+**Content:** `Success deleting user`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "Failed deleting user" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "Failed deleting user" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
+
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
 
 ## **Update A User with New Info**
 
@@ -155,41 +180,47 @@ Updating a user with certain ID with all new info.
 
 - **URL**
 
-  /api/users
+/api/users
 
 - **Method:**
 
-  `PUT`
+`PUT`
 
 - **URL Params**
 
-  **Required:**
+**Required:**
 
-  `id=[integer]`
+`id=[INTEGER]`
 
 - **Data Params**
 
 ```
-  {
-  name : STRING,
-  email : STRING
-  }
+{
+
+name : STRING,
+
+email : STRING
+
+}
 ```
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `Success updating user`
+* **Code:** 200
+
+**Content:** `Success updating user`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "Failed updating user" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "Failed updating user" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
+
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
 
 ## **Update A User with specific new Info**
 
@@ -197,55 +228,75 @@ Updating a user with a specific info only.
 
 - **URL**
 
-  /api/users
+/api/users
 
 - **Method:**
 
-  `PATCH`
+`PATCH`
 
 - **URL Params**
 
-  **Required:**
+**Required:**
 
-  `id=[integer]`
+`id=[INTEGER]`
 
 - **Data Params**
 
 ```
-  {
-  name : STRING,
-  }
-  {
-  email : STRING
-  }
-  {
-  name : STRING,
-  email : STRING
-  }
+{
+
+name : STRING,
+
+}
+
+{
+
+email : STRING
+
+}
+
+{
+
+name : STRING,
+
+email : STRING
+
+}
 ```
 
 - **Success Response:**
 
-  - **Code:** 200
-    **Content:** `Success updating user`
+* **Code:** 200
+
+**Content:** `Success updating user`
 
 - **Error Response:**
 
-  - **Code:** 404 NOT FOUND
-    **Content:** `{ error : "Failed updating user" }`
+* **Code:** 404 NOT FOUND
 
-  OR
+**Content:** `{ error : "Failed updating user" }`
 
-  - **Code:** 401 UNAUTHORIZED
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+OR
 
-##Usage
+- **Code:** 401 UNAUTHORIZED
+
+**Content:** `{ error : "You are unauthorized to make this request." }`
+
+| Route                    | HTTP | Description               |
+| ------------------------ | ---- | ------------------------- |
+| /api/users?name="{name}" | GET  | Get {name} match in users |
+| /api/users?name="{na}"   | GET  | Get {na} like in users    |
+
+## Usage
+
 With only npm :
 
 ```
-npm install <br />
-npm start <br />
+npm install
+
+npm start
+
 npm run dev
 ```
 
-Access the website via `<http://localhost:3000>` or API via `<https://localhost:3000/api>`.
+Access the website via `http://localhost:3000`or API via `http://localhost:3000/api`.
