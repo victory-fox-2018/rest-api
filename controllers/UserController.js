@@ -74,9 +74,20 @@ class UserController{
             })
             .catch(err =>{
                 // console.log('TEST',err);
-                res.status(500).json({users:err})
+                res.status(500).json({msg:err})
             })
 
+    }
+
+    static findUserById(req,res,inputId){
+        // console.log('TEST',inputId)
+        User.findById(inputId)
+            .then(row =>{
+                res.status(200).json({user : row});
+            })
+            .catch(err=>{
+                res.status(500).json({msg : err});
+            })
     }
 }
 

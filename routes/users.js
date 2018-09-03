@@ -4,6 +4,7 @@ var router = express.Router();
 const UserController = require('../controllers/UserController');
 const IsLogin = require('../middlewares/IsLogin');
 const IsAdmin = require('../middlewares/IsAdmin');
+const IsAuthorized = require('../middlewares/IsAuthorized');
 
 /* GET users listing. */
 
@@ -27,6 +28,14 @@ router.post('/signup',(req,res,next)=> {
 // sign in
 router.post('/signin',(req,res,next)=> {
   UserController.signIn(req,res);
+})
+
+// get individual data
+router.get('/users/:id',IsLogin,IsAuthorized,(req,res,next)=>{
+
+  // console.log('TEST', req.params.id)
+  // res.send(req.params.id)
+  UserController.findUserById(req,res,req.params.id)
 })
 
 module.exports = router;
