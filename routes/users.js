@@ -41,4 +41,11 @@ router.delete('/users/:id',IsLogin,IsAdmin,(req,res,next)=>{
   UserController.deleteById(req,res,req.params.id)
 })
 
+// update individual data
+router.put('/users/:id',IsLogin,IsAuthorized,(req,res,next)=>{
+  // console.log('TEST Controller-------')
+
+  UserController.updateById(req,res,req.params.id);
+})
+
 module.exports = router;

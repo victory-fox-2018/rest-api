@@ -99,6 +99,20 @@ class UserController{
                 res.status(500).json({msg : err});
             })
     }
+
+    static updateById(req,res,inputId){
+        let hash = HashPassword(req.body['password'])
+        // console.log('------------')
+        // console.log('TEST')
+        User.update({name : req.body['name'], username : req.body['username'],
+                        password : hash ,updatedAt : new Date()},{where : {id : inputId}})
+            .then(row =>{
+                res.status(200).json({msg : `Data with ID ${inputId} has been updated`})
+            })  
+            .catch(err =>{
+                res.status(500).json({msg : err});
+            })          
+    }
 }
 
 module.exports = UserController
