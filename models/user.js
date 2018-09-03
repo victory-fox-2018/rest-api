@@ -10,9 +10,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate: (user, options) => {
-        var bcrypt = require('bcryptjs');
-        var salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync(user.password, process.env.PASSWORD_SECRET);
+        const crypto = require('crypto');
+        const secret = process.env.PASSWORD_SECRET;
+        const hash = crypto.createHmac('sha256', secret)
+                          .update(user.password)
+                          .digest('hex');
+        console.log(hash);
+        user.password=hash
       }
     }
   });
