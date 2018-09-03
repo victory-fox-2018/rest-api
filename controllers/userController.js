@@ -144,7 +144,8 @@ module.exports = {
     User.update(input, {
       where: {
         id: id
-      }
+      },
+      individualHooks: true
     })
     .then(affectedRow => {
         res.status(200).json({
