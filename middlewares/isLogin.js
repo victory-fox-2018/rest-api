@@ -27,11 +27,11 @@ function isLogin (req,res,next) {
                 })
             }
         })
-    } else [
+    } else {
         res.status(500).json({
             message : 'token must be provided'
         })
-    ]
+    }
     
 }
 
