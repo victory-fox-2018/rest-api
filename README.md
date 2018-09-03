@@ -7,40 +7,32 @@
 ### REST API
 ##### List of basic routes:
 
-:
-        Route            |  HTTP  |        Description          |       input         |     output
+
+Route            |  HTTP  |        Description          |       input         |     output
 ------------------------ | ------ | --------------------------- | ------------------- | ---------------
-/api/hello?name={name}   |  GET   |   print hello, {name} !     |  {name} of variable |       JSON
+````/api/hello?name={name}````   |  GET   |   print hello, {name} !     |  {name} of variable |       JSON
 
 
 ### List of user routes:
 
-      Route     |  HTTP  |       Description           |     input         |     output
+Route     |  HTTP  |       Description           |     input         |     output
 -------------- | ------ | --------------------- | ----------------------- | ---------------
-/api/signup | POST | Sign up with new user info |   |     |
-/api/signin | POST | Sign in while get an access token based on credentials |   |     |
-/api/users    |  GET   |  Get all the users (admin only)  |         |    JSON    
-/api/users/:id  |  GET   |  Get a single user (admin only and authorized user)  | id of user |  JSON 
-/api/users      |  POST  |  Create a user (admin only)     |  any parameter required |    
-/api/users/:id  | DELETE |  Delete a user  (admin only)  |  id of user             |      
-/api/users/:id  |  PUT   |  Update a user with new info (admin only and authorized user) | id of user |  |      
+````/api/signup```` | POST | Sign up with new user info |   |     |
+````/api/signin```` | POST | Sign in while get an access token based on credentials |   |     |
+````/api/users````    |  GET   |  Get all the users (admin only)  |         |    JSON    
+````/api/users/:id````  |  GET   |  Get a single user (admin only and authorized user)  | id of user |  JSON 
+````/api/users````      |  POST  |  Create a user (admin only)     |  any parameter required |    
+````/api/users/:id````  | DELETE |  Delete a user  (admin only)  |  id of user             |      
+````/api/users/:id````  |  PUT   |  Update a user with new info (admin only and authorized user) | id of user |  |      
 
  
 
 ### List of filter routes:
 
-### /api/users?name="{name}" 
-##### HTTP : GET
-##### Description : Get {name} match in users
-##### Input : {name} of variable
-##### Output : JSON
-
-### /api/users?name="{na}" 
-##### HTTP : GET
-##### Description : Get {na} like in users
-##### Input : {na} or partial description of variable
-##### Output : JSON
-
+Route     |  HTTP  |       Description           |     input         |     output
+-------------- | ------ | --------------------- | ----------------------- | ---------------
+````/api/users?name="{name}"```` | GET | Get {name} match in users | {name} of variable  | JSON
+````/api/users?name="{na}"```` | GET | Get {na} like in users | {na} or partial description of variable  | JSON
 
 
 
