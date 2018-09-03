@@ -17,7 +17,7 @@ router.post('/users', isLogin, isAdmin, createUser)
 
 router.get('/users/:id', isLogin, getUserById)
 
-router.delete('/users/:id', isLogin, isAdmin, isHim, removeUser)
+router.delete('/users/:id', isLogin, isAdmin, removeUser)
 
 router.put('/users/:id', isLogin, isHim, updateUser)
 
