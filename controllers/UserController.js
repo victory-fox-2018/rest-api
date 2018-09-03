@@ -89,6 +89,16 @@ class UserController{
                 res.status(500).json({msg : err});
             })
     }
+
+    static deleteById(req,res,inputId){
+        User.destroy({where : {id : inputId}})
+            .then(row =>{
+                res.status(200).json({msg: `Data with ID ${inputId} has been deleted`});
+            })
+            .catch(err =>{
+                res.status(500).json({msg : err});
+            })
+    }
 }
 
 module.exports = UserController

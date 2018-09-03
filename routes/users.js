@@ -33,9 +33,12 @@ router.post('/signin',(req,res,next)=> {
 // get individual data
 router.get('/users/:id',IsLogin,IsAuthorized,(req,res,next)=>{
 
-  // console.log('TEST', req.params.id)
-  // res.send(req.params.id)
   UserController.findUserById(req,res,req.params.id)
+})
+
+// delete individual data
+router.delete('/users/:id',IsLogin,IsAdmin,(req,res,next)=>{
+  UserController.deleteById(req,res,req.params.id)
 })
 
 module.exports = router;
