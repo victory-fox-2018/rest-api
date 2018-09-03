@@ -11,7 +11,7 @@ module.exports = {
     })
     .catch(err=>{
       res.status(500).json({
-        msg : err
+        msg : err.message
       });
     });
   },
@@ -28,7 +28,7 @@ module.exports = {
     })
     .catch(err=>{
       res.status(500).json({
-        msg : err
+        msg : err.message
       });
     });
   },
@@ -50,7 +50,7 @@ module.exports = {
     })
     .catch(err=>{
       res.status(500).json({
-        msg : err
+        msg : err.message
       });
     });
   },
@@ -66,7 +66,7 @@ module.exports = {
     })
     .catch((err)=>{
       res.status(500).json({
-        msg : err
+        msg : err.message
       });
     });
   },
@@ -87,7 +87,7 @@ module.exports = {
     })
     .catch((err)=>{
       res.status(500).json({
-        msg : err
+        msg : err.message
       });
     });
   },
@@ -129,7 +129,9 @@ module.exports = {
       }
     })
     .catch(err=>{
-
+      res.status( 500 ).json({
+        msg : err.message
+      })
     });
   }
 };
