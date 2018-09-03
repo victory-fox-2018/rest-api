@@ -1,7 +1,7 @@
 # Rest Api Documentation
 
 ## How to Run?
-http://localhost:3000
+https://immense-cliffs-49536.herokuapp.com/
 
 ## List of Routes:
 Route | HTTP | Dscription
