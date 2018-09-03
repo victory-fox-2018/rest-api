@@ -10,7 +10,7 @@ module.exports = {
       res.json(data);
     })
     .catch(err=>{
-      res.status(500).json({
+      res.status(204).json({
         msg : err.message
       });
     });
@@ -34,8 +34,6 @@ module.exports = {
   },
 
   update : function( req,res ){
-    console.log(req.body)
-    console.log(req.params.id)
     User.update({
       name : req.body.name,
       email : req.body.email,

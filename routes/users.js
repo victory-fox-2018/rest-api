@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { findAll,findOne,remove,create,update,signIn } = require('../controller/userController');
 const isLogin = require('../middleware/isLogin');
-const isAdmin = require('../middleware/isLogin');
+const isAdmin = require('../middleware/isAdmin');
+const checkId = require('../middleware/checkId');
+
 
 
 //Admin Only
@@ -15,7 +17,7 @@ router.delete('/:id',isLogin,isAdmin,remove);
 router.post('/',isLogin,isAdmin,create);
 
 //update
-router.put('/:id',isLogin,update);
+router.put('/:id',isLogin,checkId,update);
 
 //find one
 router.get('/:id',isLogin,findOne);
