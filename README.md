@@ -11,3 +11,9 @@ List of user routes:
 | /api/users                | POST   | Create a user (admin only)                                   |
 | /api/users/:id            | DELETE | Delete a user (admin only)                                   |
 | /api/users/:id            | PUT    | Update a user with new info (admin and authenticated user)   |
+
+
+```
+Example :
+https://pure-island-65460.herokuapp.com/signup
+```
