@@ -4,7 +4,7 @@ Demo app with basic REST API
 List of routes:
 
 Route          | HTTP   | Description
----------------|--------|------------
+---------------|:------:|------------
 /api/signup    | POST   | Sign up with new new user info
 /api/signin    | POST   | Sign in while get an access token based on credentials
 /api/users     | GET    | Get all the users info (admin only)
