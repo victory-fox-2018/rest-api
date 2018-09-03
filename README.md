@@ -13,9 +13,8 @@ Route          | HTTP   | Description
 /api/users     | POST   | Create a user (admin only)
 /api/users/:id | DELETE | Delete a user (admin only)
 /api/users/:id | PUT    | Update a user with new info (admin and authenticated user)
----------------|--------|-----------------------------------------------------------
 
-#Usage
+# Usage
 With only npm:
 npm install
 npm start (node) / npm run dev (nodemon)
