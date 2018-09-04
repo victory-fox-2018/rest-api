@@ -6,6 +6,7 @@ Route            | HTTP |        Description
 
 
 List of user routes:
+
   Route           | HTTP    |            Description                                     
 ------------------|---------|------------------------------------------------------------
   api/signup      | POST    | Sign up with new user info                                 
