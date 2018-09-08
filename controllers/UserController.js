@@ -21,19 +21,21 @@ class UserController{
 
     // sign in
     static signIn(req,res){
+        // console.log(req.body)
         let hash = HashPassword(req.body['password'])
         User.findOne({where : {username : req.body['username'], password : hash}})
             .then(row =>{
                 // console.log('--------')
                 // console.log('TEST',row['dataValues']['role'])
                 // res.status(200).json({data : row});
+                // console.log('TEST',row)
                 if(row){
                     jwt.sign({
                         id : row['dataValues']['id'],
                         username : req.body['username'],
-                        password : req.body['password'],
+                        // password : req.body['password'],
                         role : row['dataValues']['role']          
-                    },'rahasia',(err,token)=>{
+                    },process.env.SECRET,(err,token)=>{
                         if(err){
                             res.status(500).json({msg : err.message})
                         }else if(token){

@@ -8,15 +8,24 @@ const User = Models.User;
 function IsLogin(req,res,next) {
     jwt.verify(req.headers.token,process.env.SECRET,(err,decoded)=>{
         if(err){
-            res.status(500).json({msg : err})
+            res.status(401).json({msg : 'TEST You are not authorized'})
         }else if(decoded){
-            User.findOne({where : {username : decoded.username, password : decoded.password}})
+            // console.log('DECODED', decoded)
+            User.findOne({where : {username : decoded.username}})
                 .then(row =>{
                     // res.status(200).json({data : row});
                     // let objDecoded = req.decoded
-                    req.decoded = decoded;
+                    // console.log('CEK',row)
+                    if(row){
+                        req.decoded = decoded;
 
-                    next()
+                        next()    
+                    }else{
+                        res.status(401).json({
+                            msg: 'You are not authorized'                            
+                        })
+                    }
+                    
                 })
                 .catch(err =>{
                     res.status(500).json({msg : err});
