@@ -1,0 +1,27 @@
+{
+  "name": "day1",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "~1.9.0",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.1.1"
+  },
+  "description": "|          Route           |    HTTP   |            Description              |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/signup              | POST      | Sign up with new user info          |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/signin              | POST      | Sign in while get an access token   |\r |                          |           | based on credentials                |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/users               | GET       | Get all the users info (admin only) |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/users/:id           | GET       | Get a single user info              |\r |                          |           | (admin and authenticated user)      |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/users               | POST      | Create a user (admin only)          |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/users/:id           | DELETE    | Delete a user (admin only)          |\r | ------------------------ | --------- | ----------------------------------- |\r | /api/users/:id           | PUT       | Update a user with new info         |\r |                          |           | (admin and authenticated user)      |",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
