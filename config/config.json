@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "pandansar1",
+    "database": "rest_api",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
