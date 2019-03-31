@@ -1,0 +1,31 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "## List of routes: Route | HTTP | Dscription ----- | ---- | ---------- /api/signup | POST | Sign up with new user info /api/signin | POST | Sign in while get an access token based on credentials /api/users | GET | Get all the users info (admin only) /api/users/:id | GET | Get a single user info (admin and authenticated user) /api/users | POST | Create a user (admin only) /api/users/:ud | DELETE | Delete a user (admin only) /api/users/:id | PUT | Update a user with ne info (admin and authenticated user)",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridhoemgl/rest-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridhoemgl/rest-api/issues"
+  },
+  "homepage": "https://github.com/ridhoemgl/rest-api#readme"
+}
